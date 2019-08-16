@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${fileDirname}/main",
             "args": [],
-            "stopAtEntry": true,
+            "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
@@ -22,7 +22,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "makefile",
+            "preLaunchTask": "gcc build active file",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]

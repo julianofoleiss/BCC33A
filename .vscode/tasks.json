@@ -4,9 +4,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "makefile",
+            "label": "gcc build active file",
             "type": "shell",
-            "command": "make"
+//            "command": "make -C ${relativeFileDirname}",
+            "command": "make -C ${relativeFileDirname}",
         }
     ]
 }

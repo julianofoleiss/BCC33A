@@ -6,8 +6,7 @@
         {
             "label": "gcc build active file",
             "type": "shell",
-//            "command": "make -C ${relativeFileDirname}",
-            "command": "make -C ${relativeFileDirname}",
+            "command": "make"
         }
     ]
 }

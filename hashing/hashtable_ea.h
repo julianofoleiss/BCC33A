@@ -9,6 +9,12 @@ enum estado_noh{
     EN_APAGADO
 };
 
+enum probing_strategy{
+    PS_LINEAR,
+    PS_QUADRATIC,
+    PS_DOUBLE
+};
+
 typedef struct htea_noh{
     int chave;
     int valor;
@@ -16,15 +22,19 @@ typedef struct htea_noh{
 }htea_noh;
 
 typedef struct htea_ea{
+    enum probing_strategy ps;
     htea_noh* t;
     int m;
     int n;
     prime_list_t* pl;
     int max_n;
     const char* prime_list_file;
+    int (*probe_func)(int, int);
+    int (*next_m_func)(struct htea_ea*);
 }htea_ea;
 
-htea_ea* HTEA_Criar(int m, const char* prime_list);
+htea_ea* HTEA_Criar(int m, const char* prime_list, 
+    enum probing_strategy ps);
 int HTEA_Inserir(htea_ea** HT, int chave, int valor);
 int HTEA_Remover(htea_ea* HT, int chave);
 int HTEA_Buscar(htea_ea* HT, int chave);

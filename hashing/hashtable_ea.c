@@ -2,7 +2,22 @@
 #include "hashtable_ea.h"
 #include "prime_list.h"
 
-htea_ea* HTEA_Criar(int m, const char* prime_list){
+int linear_probe(int x, int k){
+    return k;
+}
+
+int linear_next_m(htea_ea* HT){
+    int novo_m;
+    
+    novo_m = HT->m * 2;
+    novo_m = PL_NextPrime(HT->pl, novo_m);
+
+    return novo_m;
+}
+
+htea_ea* HTEA_Criar(int m, const char* prime_list, 
+    enum probing_strategy ps){
+
     htea_ea* novo;
     int i;
 
@@ -10,14 +25,20 @@ htea_ea* HTEA_Criar(int m, const char* prime_list){
     novo->n = 0;
     novo->pl = PL_Load(prime_list);
     novo->prime_list_file = prime_list;
-    novo->m = PL_NextPrime(novo->pl, m);
+    novo->m = m;
     novo->t = malloc(sizeof(htea_noh) * novo->m);
-
+    novo->ps = ps;
+    
     for(i = 0; i < novo->m; i++){
         novo->t[i].estado = EN_LIVRE;
     }
 
     novo->max_n = novo->m / 2;
+
+    if(ps == PS_LINEAR){
+        novo->probe_func = linear_probe;
+        novo->next_m_func = linear_next_m;
+    }
 
     return novo;
 }
@@ -34,7 +55,7 @@ int HTEA_Inserir(htea_ea** HT, int chave, int valor){
     k = 1;
 
     if( (tab->n+1) >tab->max_n ){
-        *HT = HTEA_Redim(tab, 2 * tab->m);
+        *HT = HTEA_Redim(tab, tab->next_m_func(tab) );
         tab = *HT;
     }
 
@@ -67,7 +88,9 @@ int HTEA_Buscar(htea_ea* HT, int chave){
 }
 
 htea_ea* HTEA_Redim(htea_ea* HT, int novo_m){
-    htea_ea* novo = HTEA_Criar(novo_m, HT->prime_list_file);
+    htea_ea* novo = HTEA_Criar(novo_m, HT->prime_list_file, 
+        HT->ps);
+
     int i;
     
     for(i = 0; i < HT->m; i++){
@@ -81,7 +104,9 @@ htea_ea* HTEA_Redim(htea_ea* HT, int novo_m){
 }
 
 int HTEA_Hash(htea_ea* HT, int chave, int k){
-    return ((chave % HT->m) + k ) % HT->m;
+    return ((chave % HT->m) 
+                + HT->probe_func(chave, k) ) 
+                % HT->m;
 }
 
 void HTEA_Destroy(htea_ea* HT){
@@ -89,3 +114,5 @@ void HTEA_Destroy(htea_ea* HT){
     PL_Destroy(HT->pl);
     free(HT);
 }
+
+

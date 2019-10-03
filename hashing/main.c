@@ -16,7 +16,7 @@ int main(int argc, char** argv){
 
     htea_ea* ht;
 
-    ht = HTEA_Criar(3, "primes1.dat");
+    ht = HTEA_Criar(3, "primes1.dat", PS_LINEAR);
 
     HTEA_Inserir(&ht, 10, 5);
     HTEA_Inserir(&ht, 11, 7);

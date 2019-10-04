@@ -11,8 +11,9 @@ enum estado_noh{
 
 enum probing_strategy{
     PS_LINEAR,
+    PS_RANDOM,
     PS_QUADRATIC,
-    PS_DOUBLE
+    PS_DOUBLE,
 };
 
 typedef struct htea_noh{
@@ -29,8 +30,12 @@ typedef struct htea_ea{
     prime_list_t* pl;
     int max_n;
     const char* prime_list_file;
-    int (*probe_func)(int, int);
+    int (*probe_func)(struct htea_ea*, int, int);
     int (*next_m_func)(struct htea_ea*);
+    void (*probe_delete_func)(struct htea_ea*);
+
+    //atributos para o random probing.
+    int* rp_P;
 }htea_ea;
 
 htea_ea* HTEA_Criar(int m, const char* prime_list, 

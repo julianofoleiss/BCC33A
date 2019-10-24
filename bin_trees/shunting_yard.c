@@ -60,8 +60,8 @@ char* shunting_yard(char* expression){
                 t = CSTACK_Topo(operadores);
                 
                 if(c == ')'){
-                    printf("pilha: ");
-                    CSTACK_Imprimir(operadores);
+                    //printf("pilha: ");
+                    //CSTACK_Imprimir(operadores);
                     while(t != '('){
                         t = CSTACK_Desempilhar(operadores);
                         saida[k] = t;
@@ -86,7 +86,7 @@ char* shunting_yard(char* expression){
             }
             CSTACK_Empilhar(operadores, c);
         }
-        CSTACK_Imprimir(operadores);
+        //CSTACK_Imprimir(operadores);
     }
 
     while(!CSTACK_Vazia(operadores)){

@@ -2,19 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-//#define DEBUG
+#define DEBUG 0
 
 //Esta função aloca e inicializa um vetor de n inteiros aleatórios
-int* gerar_vetor_aleatorio(int n){
+int* gerar_vetor_aleatorio(int n, int max, int seed){
     int i;
     int* v;
+    srand(seed);
 
     //Alocar vetor na heap com n elementos.
     v = malloc(sizeof(int) * n);
     //Inicializar o vetor com numeros aleatórios de 0 a (n*10)-1
     for(i = 0; i < n; i++){
-        v[i] = rand() % (n*10);
-        #ifdef DEBUG
+        v[i] = rand() % (max +1) ;
+        #if DEBUG
             printf("%d, ", v[i]);
             fflush(stdout);
         #endif
@@ -29,6 +30,7 @@ void imprimir_vetor(int* v, int n){
         printf("%d, ", v[i]);
         fflush(stdout);
     }
+    printf("\n");
 }
 
 int main(int argc, char** argv){
@@ -42,9 +44,11 @@ int main(int argc, char** argv){
     n = atoi(argv[1]);
     srand(0);
 
-    v = gerar_vetor_aleatorio(n);
+    v = gerar_vetor_aleatorio(n, n * 100, 0);
 
-    //imprimir_vetor(v, n);
+    #if DEBUG
+    imprimir_vetor(v, n);
+    #endif
 
     return 0;
 }

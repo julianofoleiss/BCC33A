@@ -82,6 +82,12 @@ int ILIST_Buscar(ILIST *L, int chave){
 
 }
 
+INOH* ILIST_Endereco(ILIST *L, int pos){
+    if(pos != -1)
+        return &L->nos[pos];
+    return NULL;
+}
+
 void ILIST_Imprimir(ILIST *L, int debug){
     int i;
 

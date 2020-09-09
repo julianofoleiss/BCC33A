@@ -1,12 +1,14 @@
+#pragma once
+
 #include "ilist.h"
 
-typedef struct HTED {
+typedef struct THED {
     ILIST** t;
     int m;
-} HTED;
+} THED;
 
-HTED* HT_Criar(int m, int alloc_step);
-int HT_Hash(HTED* HT, int chave);
-void HT_Inserir(HTED* HT, int chave, int valor);
-void HT_Remover(HTED* HT, int chave);
-int HT_Buscar(HTED* HT, int chave);
+THED* THED_Criar(int m, int alloc_step);
+int THED_Hash(THED* HT, int chave);
+void THED_Inserir(THED* HT, int chave, int valor);
+void THED_Remover(THED* HT, int chave);
+INOH* THED_Buscar(THED* HT, int chave);

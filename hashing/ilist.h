@@ -1,5 +1,4 @@
-#ifndef __ILIST_H__
-#define __ILIST_H__
+#pragma once
 
 typedef struct INOH{
     int chave;
@@ -20,5 +19,4 @@ int ILIST_Inserir(ILIST *L, int chave, int valor);
 int ILIST_Remover(ILIST *L, int chave);
 int ILIST_Buscar(ILIST *L, int chave);
 void ILIST_Imprimir(ILIST *L, int debug);
-
-#endif
+INOH* ILIST_Endereco(ILIST *L, int pos);

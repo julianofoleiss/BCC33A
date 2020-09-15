@@ -1,50 +1,24 @@
-#ifndef __HTEA__
-#define __HTEA__
+#pragma once
 
-#include "prime_list.h"
+typedef enum ESTADO {
+    E_LIVRE,
+    E_OCUPADO,
+    E_APAGADO
+} ESTADO;
 
-enum estado_noh{
-    EN_LIVRE,
-    EN_OCUPADO,
-    EN_APAGADO
-};
-
-enum probing_strategy{
-    PS_LINEAR,
-    PS_RANDOM,
-    PS_QUADRATIC,
-    PS_DOUBLE,
-};
-
-typedef struct htea_noh{
+typedef struct ELEM{
     int chave;
     int valor;
-    enum estado_noh estado;
-}htea_noh;
+    ESTADO estado;
+} ELEM;
 
-typedef struct htea_ea{
-    enum probing_strategy ps;
-    htea_noh* t;
+typedef struct THEA{
     int m;
-    int n;
-    prime_list_t* pl;
-    int max_n;
-    const char* prime_list_file;
-    int (*probe_func)(struct htea_ea*, int, int);
-    int (*next_m_func)(struct htea_ea*);
-    void (*probe_delete_func)(struct htea_ea*);
+    ELEM* TH;
+} THEA;
 
-    //atributos para o random probing.
-    int* rp_P;
-}htea_ea;
-
-htea_ea* HTEA_Criar(int m, const char* prime_list, 
-    enum probing_strategy ps);
-int HTEA_Inserir(htea_ea** HT, int chave, int valor);
-int HTEA_Remover(htea_ea* HT, int chave);
-int HTEA_Buscar(htea_ea* HT, int chave);
-htea_ea* HTEA_Redim(htea_ea* HT, int novo_m);
-int HTEA_Hash(htea_ea* HT, int chave, int k);
-void HTEA_Destroy(htea_ea* HT);
-
-#endif
+int THEA_Hash(THEA* TH, int chave, int k);
+THEA* THEA_Criar(int m);
+int THEA_Inserir(THEA *TH, int chave, int valor);
+int THEA_Buscar(THEA *TH, int chave);
+void THEA_Remover(THEA* TH, int chave);

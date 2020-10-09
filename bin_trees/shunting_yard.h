@@ -1,6 +1,4 @@
-#ifndef __SHUNTING_YARD__
-#define __SHUNTING_YARD__
+#pragma once
 
-char* shunting_yard(char* expression);
+char* shunting_yard(const char* expression);
 
-#endif

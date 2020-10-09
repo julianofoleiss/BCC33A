@@ -28,14 +28,16 @@ int menor_precedencia(char c1, char c2){
     }
 }
 
-char* shunting_yard(char* expression){
-    char* saida;
-    int i;
+char* shunting_yard(const char* expression){
+    char* saida, *numstring;
+    int i, j;
     int k = 0;
+    int nk = 0;
     int elen;
     char c, t;
 
     saida = malloc(sizeof(char) * strlen(expression) * 3);
+    numstring = malloc(sizeof(char) * strlen(expression) * 3);
 
     CSTACK *operadores;
 
@@ -50,12 +52,20 @@ char* shunting_yard(char* expression){
             continue;
 
         if(isdigit(c)){
-            saida[k] = c;
-            saida[k+1] = ' ';
-            k+=2;
+            numstring[nk] = c;
+            nk++;
         }   
 
         if(eh_operador(c)){
+
+            if(nk > 0){
+                for(j = 0; j < nk; j++)
+                    saida[k+j] = numstring[j];
+                saida[k+j] = ' ';
+                k+=nk+1;
+                nk = 0;
+            }
+
             if(!CSTACK_Vazia(operadores)){
                 t = CSTACK_Topo(operadores);
                 
@@ -86,8 +96,15 @@ char* shunting_yard(char* expression){
             }
             CSTACK_Empilhar(operadores, c);
         }
-        //CSTACK_Imprimir(operadores);
     }
+
+    if(nk > 0){
+        for(j = 0; j < nk; j++)
+            saida[k+j] = numstring[j];
+        saida[k+j] = ' ';
+        k+=nk+1;
+        nk = 0;
+    }    
 
     while(!CSTACK_Vazia(operadores)){
         t = CSTACK_Desempilhar(operadores);
@@ -99,6 +116,7 @@ char* shunting_yard(char* expression){
 
     CSTACK_Destruir(operadores);
     free(operadores);
+    free(numstring);
 
     return saida;
 }

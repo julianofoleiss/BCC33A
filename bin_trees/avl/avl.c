@@ -49,10 +49,6 @@ static void CasoE(AAVL **A, int *verificar){
             printf("Caso E, RotDir(p)\n");
         #endif
         // caso E
-
-        // Como u->fb ==1, sabemos que u->esq tem 1 nível a mais que u->dir. Assim, se u->esq tem altura h+1,
-        // 
-
         RotDir(p);
         *A = u;
         p->fb = 0;

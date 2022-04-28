@@ -13,7 +13,7 @@ ILIST* ILIST_Criar(int alloc_step){
     novo->max = 0;
     novo->tam = 0;
     novo->nos = malloc(sizeof(INOH) * novo->alloc);
-
+    novo->itpos = 0;
     for(i = 0; i < novo->alloc; i++){
         novo->nos[i].ocupado = 0;
     }
@@ -94,8 +94,39 @@ void ILIST_Imprimir(ILIST *L, int debug){
     printf("TAM: %d, MAX: %d\n", L->tam, L->max);
 
     for(i = 0; i < L->max; i++){
-        if (L->nos[i].ocupado || debug)
-            printf("%d -> %d (%d) \n", L->nos[i].chave, L->nos[i].valor, L->nos[i].ocupado);
+        if (L->nos[i].ocupado || debug){
+            printf("%d -> %d", L->nos[i].chave, L->nos[i].valor);
+            if(debug)
+                printf(" (%d)", L->nos[i].ocupado);
+            printf("\n");
+        }
     }
 
+}
+
+size_t ILIST_Tamanho(ILIST *L){
+    return L->tam;
+}
+
+void ILIST_Rebobinar(ILIST *L){
+    L->itpos = 0;
+}
+
+INOH* ILIST_Prox(ILIST *L){
+    INOH* prox = NULL;
+    if(L->itpos < L->alloc){
+        for(;L->itpos < L->alloc; L->itpos++){
+            if(L->nos[L->itpos].ocupado){
+                prox = &L->nos[L->itpos];
+                L->itpos++;
+                break;
+            }
+        }
+    }
+    return prox;
+}
+
+void ILIST_Destruir(ILIST *L){
+    free(L->nos);
+    free(L);
 }

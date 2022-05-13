@@ -28,6 +28,8 @@ void PL_Create(const char* txt_prime_list, const char* output_filename, int n_pr
     fwrite(out_buffer, sizeof(int), nread+1, output);
 
     printf("%d\n", nread);
+    fclose(input);
+    fclose(output);
 
     free(out_buffer);
 }
@@ -71,6 +73,8 @@ prime_list_t* PL_Load(const char* prime_data, int n_primes){
 
     prime_input = fopen(prime_data, "r");
     fread(n->PL, sizeof(int), n->n, prime_input);
+
+    fclose(prime_input);
 
     return n;
 }

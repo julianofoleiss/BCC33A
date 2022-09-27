@@ -4,7 +4,7 @@
 
 typedef struct THED {
     ILIST** t;
-    int m, n;
+    size_t m, n;
 } THED;
 
 int THED_Hash(THED* HT, int chave);

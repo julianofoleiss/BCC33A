@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdlib.h>
+
 typedef enum ESTADO {
     E_LIVRE,
     E_OCUPADO,
@@ -13,7 +15,8 @@ typedef struct ELEM{
 } ELEM;
 
 typedef struct THEA{
-    int m;
+    size_t m;
+    size_t n;
     ELEM* TH;
 } THEA;
 

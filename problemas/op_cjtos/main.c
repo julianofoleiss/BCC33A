@@ -51,10 +51,10 @@ int main(int argc, char** argv){
 
     size_t nd = 0;
     int *d = diferenca(a, 7, b, 4, &nd);
-    imprimir_vetor(u, nd);
+    imprimir_vetor(d, nd);
 
     size_t nds = 0;
-    int *ds = diferenca_simetrica(a, 7, b, 4, &nd);
+    int *ds = diferenca_simetrica(a, 7, b, 4, &nds);
     imprimir_vetor(ds, nds);    
 
     //Teste 2

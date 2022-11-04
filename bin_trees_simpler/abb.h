@@ -24,3 +24,9 @@ void ABB_Inserir(ABB*A , int chave, int valor);
 // remove a chave da árvore A.
 // Caso a chave não esteja na árvore, ela não é alterada.
 void ABB_Remover(ABB* A, int chave);
+
+// Imprime a árvore 
+void ABB_Imprimir(ABB* A);
+
+// Desaloca toda memória alocada para a árvore
+void ABB_Destruir(ABB* A);

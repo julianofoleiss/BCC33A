@@ -69,12 +69,45 @@ void test3(int argc, char** argv){
     ABB_Destruir(a);
 }
 
+void test4(int argc, char** argv){
+
+    ABB* a = ABB_Criar();
+
+    ABB_Inserir(a, 40, 41);
+    ABB_Inserir(a, 40, 42);
+    ABB_Inserir(a, 20, 23);
+    ABB_Inserir(a, 17, 0);
+    ABB_Inserir(a, 50, 2);
+
+    ABB_Imprimir(a);
+    
+    NOH* r = ABB_Buscar(a, 40);
+    printf("%d\n", r ? r->chave : -1);
+
+    r = ABB_Buscar(a, 20);
+    printf("%d\n", r ? r->chave : -1);    
+
+    r = ABB_Buscar(a, 17);
+    printf("%d\n", r ? r->chave : -1);        
+
+    r = ABB_Buscar(a, 50);
+    printf("%d\n", r ? r->chave : -1);        
+
+    r = ABB_Buscar(a, 0);
+    printf("%d\n", r ? r->chave : -1);        
+
+    ABB_Destruir(a);
+}
+
+
 int main(int argc, char** argv){
-    test1(argc, argv);
+    // test1(argc, argv);
     
     // test2(argc, argv);
 
     // test3(argc, argv);
+
+    // test4(argc, argv);
 
     return 0;
 }

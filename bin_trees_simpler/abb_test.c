@@ -1,5 +1,4 @@
 #include "abb.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -39,10 +38,43 @@ void test2(int argc, char** argv){
     ABB_Destruir(a);
 }
 
+void test3(int argc, char** argv){
+
+    ABB* a = ABB_Criar();
+
+    ABB_Inserir(a, 40, 41);
+    ABB_Inserir(a, 40, 42);
+    ABB_Inserir(a, 20, 23);
+    ABB_Inserir(a, 17, 0);
+    ABB_Inserir(a, 50, 2);
+    ABB_Inserir(a, 60, 2);
+
+    ABB_Imprimir(a);
+
+    ABB_Remover(a, 40);
+    ABB_Imprimir(a);
+
+    ABB_Remover(a, 20);
+    ABB_Imprimir(a);
+
+    ABB_Remover(a, 50);
+    ABB_Imprimir(a);
+
+    ABB_Remover(a, 60);
+    ABB_Imprimir(a);    
+
+    ABB_Remover(a, 17);
+    ABB_Imprimir(a);    
+
+    ABB_Destruir(a);
+}
+
 int main(int argc, char** argv){
     test1(argc, argv);
     
-    //test2(argc, argv);
+    // test2(argc, argv);
+
+    // test3(argc, argv);
 
     return 0;
 }

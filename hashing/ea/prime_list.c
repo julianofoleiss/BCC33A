@@ -3,7 +3,7 @@
 #include "prime_list.h"
 
 /*
-    Converte um arquivo-texto contento um número primo por linha (já ordenado)
+    Converte um arquivo-texto contendo um número primo por linha (já ordenado)
     em um arquivo binário. n_primes é o número de primos que se deseja salvar na saída.
 */
 void PL_Create(const char* txt_prime_list, const char* output_filename, int n_primes){

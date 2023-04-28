@@ -83,7 +83,7 @@ int ILIST_Buscar(ILIST *L, int chave){
 }
 
 INOH* ILIST_Endereco(ILIST *L, int pos){
-    if(pos != -1)
+    if((pos != -1) && (pos >=0) && (pos < L->max) && (L->nos[pos].ocupado))
         return &L->nos[pos];
     return NULL;
 }

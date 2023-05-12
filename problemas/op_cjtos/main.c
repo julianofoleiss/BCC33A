@@ -3,18 +3,50 @@
 
 #include "hashtable_ea.h"
 
-int* intersecao(int* a, int nA, int* b, int nB, size_t* nSaida){
-
-}
-
+/*
+Calcula o conjunto-união entre os vetores a e b. O conjunto-interseção entre dois conjuntos é o conjunto de elementos que pertencem a ambos os conjuntos.
+Os vetores a e b podem ter elementos repetidos.
+nA e nB são os tamanhos dos conjuntos a e b, respectivamente.
+O resultado deve ser armazenado em um vetor alocado dinamicamente.
+O tamanho do vetor deve ser armazenado em nSaida.
+O vetor retornado não deve conter elementos repetidos.
+*/
 int* uniao(int* a, int nA, int* b, int nB, size_t* nSaida){
-
+    
 }
 
+/*
+Calcula o conjunto-união entre os vetores a e b. O conjunto-união entre dois conjuntos é o conjunto de elementos que pertencem a pelo menos um dos conjuntos.
+Os vetores a e b podem ter elementos repetidos.
+nA e nB são os tamanhos dos conjuntos a e b, respectivamente.
+O resultado deve ser armazenado em um vetor alocado dinamicamente.
+O tamanho do vetor deve ser armazenado em nSaida.
+O vetor retornado não deve conter elementos repetidos.
+*/
+int* intersecao(int* a, int nA, int* b, int nB, size_t* nSaida){
+    
+}
+
+/*
+Calcula o conjunto-diferença entre os vetores a e b. O conjunto-diferença entre dois conjuntos a e b é o conjunto de elementos que pertencem ao conjunto A, mas não pertencem conjunto B.
+Os vetores a e b podem ter elementos repetidos.
+nA e nB são os tamanhos dos conjuntos a e b, respectivamente.
+O resultado deve ser armazenado em um vetor alocado dinamicamente.
+O tamanho do vetor deve ser armazenado em nSaida.
+O vetor retornado não deve conter elementos repetidos.
+*/
 int* diferenca(int* a, int nA, int* b, int nB, size_t* nSaida){
 
 }
 
+/*
+Calcula o conjunto-diferença simétrica entre os vetores a e b. O conjunto-diferença simétrica entre dois conjuntos a e b é o conjunto de elementos que pertencem ao conjunto A ou B, mas não pertencem a interseção entre A e B.
+Os vetores a e b podem ter elementos repetidos.
+nA e nB são os tamanhos dos conjuntos a e b, respectivamente.
+O resultado deve ser armazenado em um vetor alocado dinamicamente.
+O tamanho do vetor deve ser armazenado em nSaida.
+O vetor retornado não deve conter elementos repetidos.
+*/
 int* diferenca_simetrica(int* a, int nA, int* b, int nB, size_t* nSaida){
 
 }
@@ -47,7 +79,7 @@ int main(int argc, char** argv){
     imprimir_vetor(u, nu);
 
     size_t n = 0;
-    int *i = intersecao(a, 7, b, 4, &n);
+    int *i = intersecao_naive(a, 7, b, 4, &n);
     imprimir_vetor(i, n);
 
     size_t nd = 0;

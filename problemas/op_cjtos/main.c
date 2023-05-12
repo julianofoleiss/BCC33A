@@ -41,13 +41,14 @@ int main(int argc, char** argv){
 
     int a[] = {1, 4, 2, 3, 1, 1, 5};
     int b[] = {1, 7, 0, 2};
-    size_t n = 0;
-    int *i = intersecao(a, 7, b, 4, &n);
-    imprimir_vetor(i, n);
 
     size_t nu = 0;
     int *u = uniao(a, 7, b, 4, &nu);
     imprimir_vetor(u, nu);
+
+    size_t n = 0;
+    int *i = intersecao(a, 7, b, 4, &n);
+    imprimir_vetor(i, n);
 
     size_t nd = 0;
     int *d = diferenca(a, 7, b, 4, &nd);
@@ -55,7 +56,12 @@ int main(int argc, char** argv){
 
     size_t nds = 0;
     int *ds = diferenca_simetrica(a, 7, b, 4, &nds);
-    imprimir_vetor(ds, nds);    
+    imprimir_vetor(ds, nds);  
+
+    free(u);
+    free(i);
+    free(d);
+    free(ds);  
 
     //Teste 2
 
@@ -63,7 +69,10 @@ int main(int argc, char** argv){
     // int* y = vetor_aleatorio(1000, 10000, 0);
     // size_t nz = 0;
     // int *z = intersecao(x, 1000, y, 1000, &nz);
-    // imprimir_vetor(z, nz);
+
+    // free(x);
+    // free(y);
+    // free(z);
 
 
     return 0;

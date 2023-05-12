@@ -42,6 +42,12 @@ THEA* THEA_Criar(int m){
 int THEA_Inserir(THEA *TH, int chave, int valor){
     int h = THEA_Buscar(TH, chave);
     if(h < 0){
+
+        if(TH->n > (TH->m/2)){
+            //printf("redimensionando de M=%ld para M=%ld\n", TH->m, TH->m*2);
+            THEA_Redimensionar(TH, TH->m*2);
+        }
+
         //chave não está na tabela, devemos encontrar
         //onde inseri-la
         if(TH->m == TH->n)
@@ -55,11 +61,6 @@ int THEA_Inserir(THEA *TH, int chave, int valor){
         TH->n++;
         TH->t[h].chave = chave;
         TH->t[h].estado = E_OCUPADO;        
-        if(TH->n > (TH->m/2)){
-            //printf("redimensionando de M=%ld para M=%ld\n", TH->m, TH->m*2);
-            THEA_Redimensionar(TH, TH->m*2);
-        }
-
     }
     TH->t[h].valor = valor;
     return h;
@@ -86,7 +87,7 @@ void THEA_Remover(THEA* TH, int chave){
     if(pos >= 0){
         TH->t[pos].estado = E_APAGADO;
         TH->n--;
-        if(TH->n < (TH->m/4)){
+        if(TH->n < (TH->m/5)){
             //printf("redimensionando de M=%ld para M=%ld (n = %ld)\n", TH->m, TH->m/2, TH->n);
             THEA_Redimensionar(TH, TH->m/2);
         }

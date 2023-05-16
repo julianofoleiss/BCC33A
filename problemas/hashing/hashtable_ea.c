@@ -125,6 +125,7 @@ ELEM* THEA_Itens(THEA* TH){
         itens[i] = TH->t[pos];
     }
     free(chaves);
+    return itens;
 }
 
 bool THEA_Valor(THEA* TH, int chave, int* valor){

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "hashtable_ea.h"
+#include "utils.h"
 
 /*
     Retorna um novo vetor de inteiros com os elementos de v, mas sem repetições.
@@ -36,18 +37,13 @@ int main(int argc, char** argv){
     // int n = sizeof(v)/sizeof(int);
     // int returnSize;
     // int* ret = dedup(v, n, &returnSize);
-    // for(int i = 0; i < returnSize; i++){
-    //     printf("%d ", ret[i]);
-    // }
-    // printf("\n");
+    // imprimir_vetor(ret, returnSize);
     // free(ret);
 
     //Teste print_counts
     // int v[] = {1, 5, 2, 1, 1, 1, 6, 7, 2, 5};
     // int n = sizeof(v)/sizeof(int);
     // print_counts(v, n);
-
-
 
     //Teste twosum
     // int v[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};

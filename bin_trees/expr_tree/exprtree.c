@@ -1,7 +1,7 @@
 #include "exprtree.h"
 #include <stdlib.h>
 
-ExprTree* ET_Criar(int dado, ExprTree *e, ExprTree *d){
+ExprTree* ET_Criar(ExprTree *e, ExprTree *d){
     ExprTree *n;
     
     n = malloc(sizeof(struct ExprTree));

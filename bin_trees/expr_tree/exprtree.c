@@ -1,5 +1,6 @@
 #include "exprtree.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 ExprTree* ET_Criar(ExprTree *e, ExprTree *d){
     ExprTree *n;
@@ -31,9 +32,9 @@ void ET_Destruir(ExprTree *A){
 //     me = (*id)++;
 
 //     if(A->tipo_no == ETTN_CONSTANTE)
-//         fprintf(saida, "%d [label=\"%d\"];\n", me, A->dado.constante);
+//         fprintf(saida, "%d [label=\"%d\"];\n", me, A->valor_constante);
 //     else
-//         fprintf(saida, "%d [label=\"%c\"];\n", me, A->dado.op);
+//         fprintf(saida, "%d [label=\"%c\"];\n", me, A->operador);
 
 //     if(e || d){
 //         if(e)
